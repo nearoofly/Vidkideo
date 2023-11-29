@@ -35,5 +35,7 @@ MoviePy.js
 ## Auteurs
 - [Wharkly47]
 
+![Nom de l'image](WiG/image.png)
+
 ## Licence
 Ce projet est sous licence [Creative Commons Zero v1.0 Universal].
