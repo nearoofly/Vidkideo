@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Créateur de vidéos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jq/MoviePy.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 100px auto;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="file"] {
+            margin-bottom: 50px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<body style="background-image: url('WiG/animation.gif');">
+    <div class="container">
+        <h1>Créer des Vidéos l'aide des images</h1>
+        <input id="imageInput" type="file" accept="image/*" multiple>
+        <input id="audioInput" type="file" accept="audio/*">
+        <button id="createVideoBtn">Créer Vidéo</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/moviepy/dist/MoviePy.js"></script>
+    <script>
+        $('#createVideoBtn').on('click', function() {
+            var imageFiles = $('#imageInput').prop('files');
+            var audioFile = $('#audioInput').prop('files')[0];
+
+            if (imageFiles.length === 0 || !audioFile) {
+                alert('Veuillez sélectionner des images et un fichier audio.');
+                return;
+            }
+
+            var images = [];
+            for (var i = 0; i < imageFiles.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    images.push(e.target.result);
+                    if (images.length === imageFiles.length) {
+                        createVideo(images, audioFile);
+                    }
+                };
+                reader.readAsDataURL(imageFiles[i]);
+            }
+        });
+
+        function createVideo(images, audioFile) {
+            var audio = MoviePy.audio.read(audioFile);
+            var clip = MoviePy.ImageSequenceClip({ imgsData: images });
+            var video = clip.set_audio(audio);
+
+            var videoBlob = video.get_blob();
+            var videoUrl = URL.createObjectURL(videoBlob);
+
+            var a = document.createElement('a');
+            a.href = videoUrl;
+            a.download = 'video.mp4';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
