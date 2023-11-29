@@ -23,6 +23,14 @@ Pour contribuer à Vikideo, suivez ces étapes :
 3. Validez vos modifications (`git commit -m 'Add some AmazingFeature'`).
 4. Poussez vers la branche (`git push origin feature/AmazingFeature`).
 5. Ouvrez une pull request.
+   
+## Fonctionnalités :
+Importer plusieurs images pour créer une séquence vidéo.
+Charger un fichier audio pour l'intégrer à la vidéo.
+Télécharger la vidéo finale au format MP4.
+Technologies Utilisées :
+HTML, CSS, JavaScript
+MoviePy.js
 
 ## Auteurs
 - [Wharkly47]
