@@ -28,4 +28,4 @@ Pour contribuer à Vikideo, suivez ces étapes :
 - [Wharkly47]
 
 ## Licence
-Ce projet est sous licence [].
+Ce projet est sous licence [Creative Commons Zero v1.0 Universal].
